@@ -289,6 +289,7 @@ alert tcp any any -> any any (msg:"Mon nom!"; content:"Rubinstein"; sid:4000015;
 ---
 
 **Reponse :**  
+Elle log une alerte quand il y a une communication tcp de n'importe quelle source vers n'importe qu'elle destination mais le paquet doit contenir dans ses data, un champs msg "Mon nom!" et un champs content avec la chaine "Rubinstein". Cette règle est identifié avec l'id "4000015" et il s'agit de la première version de la règle. (rev:1).
 
 ---
 
