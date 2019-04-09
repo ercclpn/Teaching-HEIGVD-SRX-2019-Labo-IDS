@@ -304,7 +304,7 @@ sudo snort -c myrules.rules -i eth0
 ---
 
 **Reponse :**  
-
+On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regardé plus tard)
 ---
 
 Aller à un site web contenant votre nom ou votre mot clé que vous avez choisi dans son text (il faudra chercher un peu pour trouver un site en http...). Ensuite, arrêter Snort avec `CTRL-C`.
@@ -314,7 +314,12 @@ Aller à un site web contenant votre nom ou votre mot clé que vous avez choisi 
 ---
 
 **Reponse :**  
-
+Je vois les alertes suivantes:
+[**] [1:4000015:3] text message [**]
+[Priority: 0] 
+04/09-15:48:45.285322 128.65.195.22:80 -> 10.192.91.110:55730
+TCP TTL:53 TOS:0x0 ID:69 IpLen:20 DgmLen:227 DF
+***AP*** Seq: 0xCD5EEAE6  Ack: 0x3496644E  Win: 0xF5  TcpLen: 20
 ---
 
 Aller au répertoire /var/log/snort. Ouvrir le fichier `alert`. Vérifier qu'il y ait des alertes pour votre nom.
@@ -339,6 +344,15 @@ Ecrire une règle qui journalise (sans alerter) un message à chaque fois que Wi
 ---
 
 **Reponse :**  
+Quelle est votre règle ? 
+```bash
+log tcp any any -> 91.198.174.192 443 (msg:"ACCESS TO WIKIPEDIA";sid:4000015;rev:3;)
+```
+
+Où le message a-t'il été journalisé ?
+Le message a été journalisé dans le fichier se trouvant dans /var/log/snort/snort.log.xxxxyyyyy
+
+Qu'est-ce qui a été journalisé ?
 
 ---
 
