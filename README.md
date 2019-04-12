@@ -316,11 +316,13 @@ Aller à un site web contenant votre nom ou votre mot clé que vous avez choisi 
 
 **Reponse :**  
 Je vois les alertes suivantes:
+```
 [**] [1:4000015:3] text message [**]
 [Priority: 0] 
 04/09-15:48:45.285322 128.65.195.22:80 -> 10.192.91.110:55730
 TCP TTL:53 TOS:0x0 ID:69 IpLen:20 DgmLen:227 DF
 ***AP*** Seq: 0xCD5EEAE6  Ack: 0x3496644E  Win: 0xF5  TcpLen: 20
+```
 
 ---
 
@@ -384,7 +386,9 @@ Modifier votre règle pour que les pings soient détectés dans les deux sens.
 ---
 
 **Reponse :**  
-alert icmp any any <-> 192.168.0.164 any (msg:"Ping entrant";sid:4000016;rev:1;)
+alert icmp any any <-> 192.168.0.164 any (msg:"Ping detection";sid:4000016;rev:1;)
+
+Il suffit de modifier la direction de détection de la règle (<->).
 
 ---
 
@@ -400,6 +404,7 @@ Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été 
 ---
 
 **Reponse :**  
+alert tcp 192.168.1.0/24 any -> 192.168.1.2 any (msg:"SSH connexion";content"");
 
 ---
 
@@ -413,7 +418,8 @@ Lancer Wireshark et faire une capture du trafic sur l'interface connectée au br
 
 ---
 
-**Reponse :**  
+**Reponse :**   
+snort -r fichier.pcap
 
 ---
 
@@ -423,7 +429,8 @@ Utiliser l'option correcte de Snort pour analyser le fichier de capture Wireshar
 
 ---
 
-**Reponse :**  
+**Reponse :**   
+Il n'y a aucune différence par rapport à l'analyse en temps réel. Il traite le fichier comme s'il recevait les infos depuis la carte réseau. Cela veut dire qu'il enregistre aussi les alertes dans le fichier d'alerte.
 
 ---
 
