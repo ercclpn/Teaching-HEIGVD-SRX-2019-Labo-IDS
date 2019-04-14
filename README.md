@@ -336,6 +336,7 @@ Aller au répertoire /var/log/snort. Ouvrir le fichier `alert`. Vérifier qu'il 
 ---
 
 **Reponse :**  
+
 Le premier nombre est le Generator ID, cela nous donne quel est le sous-système de snort qui a généré l'alerte.
 Le deuxième nombre est le Snort ID, par conséquent l'ID de notre règle.
 Le troisième nombre est l'ID de la révision.
@@ -343,7 +344,8 @@ Le `text message` correspond au type d'alerte.
 La priorité de l'alerte, ici 0.
 Nous avons ensuite le timestamp, l'ip source ainsi que le port, l'ip de destination ainsi que le port.
 Nous pouvons voir que la requête est de type TCP avec un time to live de 53, un type of service de 0x0, le header de l'ip est de 20bits, la taille du datagramme est de 227, le paquet n'est pas fragmenté.
-Nous avons ensuite une séquence avec le N° 0xCD5EEAE6 et le numéro de l'ACK N° 0x3496644E, la taille de la fenêtre qui est de 0xF5, puis la longueur du segment tcp qui est de 20bits.
+Nous avons ensuite une séquence avec le N° 0xCD5EEAE6 et le numéro de l'ACK N° 0x3496644E, la taille de la fenêtre qui est de 0xF5, puis la longueur du segment tcp qui est de 20bits.  
+
 ---
 
 
