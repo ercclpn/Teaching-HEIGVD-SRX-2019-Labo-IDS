@@ -404,8 +404,8 @@ Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été 
 ---
 
 **Reponse :**  
-alert tcp 192.168.1.0/24 any -> 192.168.1.2 any (msg:"SSH connexion";content"");
-
+alert tcp 192.168.0.0/24 any -> 192.168.0.164 any (msg:"SSH connection";content"SSH-2.0";nocase;sid:40000006;rev:1;)
+On contrôle toutes communications depuis le même sous-réseau vers le host qui a comme adresse IP 192.168.0.164 et vérifie si l'enête d'un packet sniffé contient le mot clé `SSH-2.0` sans casse.
 ---
 
 --
