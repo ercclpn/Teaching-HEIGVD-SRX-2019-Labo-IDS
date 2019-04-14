@@ -306,7 +306,8 @@ sudo snort -c myrules.rules -i eth0
 
 **Reponse :**  
 On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0.
-
+Quant à la signification de ce warning, là voici: 
+Les preprocessors Snort sont un mécanisme permettant l'inclusion facile de fonctionnalités modulaire. Le code preprocessor s'exécutera avant le moteur de détection. Le warning nous prévient qu'aucun preprocessor n'a alors été configuré pour la policy que nous utilisons en ce moment.
 ![image](images/snort_init_part1.PNG)
 ![image](images/snort_init_part2.PNG)
 ---
