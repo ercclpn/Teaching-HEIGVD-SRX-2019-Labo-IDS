@@ -306,6 +306,8 @@ sudo snort -c myrules.rules -i eth0
 **Reponse :**  
 On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regardé plus tard)
 
+![image](images/snort_init_part1.png)
+![image](images/snort_init_part2.png)
 ---
 
 Aller à un site web contenant votre nom ou votre mot clé que vous avez choisi dans son text (il faudra chercher un peu pour trouver un site en http...). Ensuite, arrêter Snort avec `CTRL-C`.
@@ -370,8 +372,11 @@ Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping d
 
 ---
 
-**Reponse :**  
-alert icmp [any,!192.168.0.164]any -> 192.168.0.164 any (msg:"Ping entrant";sid:4000016;rev:1;)
+**Reponse :**  ^
+```bash
+alert icmp any any -> 192.168.0.164 any (msg:"Ping entrant";sid:4000016;rev:1;)
+```
+![image](images/Ping_Entrant.png)
 
 ---
 
@@ -386,9 +391,12 @@ Modifier votre règle pour que les pings soient détectés dans les deux sens.
 ---
 
 **Reponse :**  
-alert icmp any any <-> 192.168.0.164 any (msg:"Ping detection";sid:4000016;rev:1;)
+```bash
+alert icmp any any <> 192.168.0.164 any (msg:"Ping detection";sid:4000016;rev:1;)
+```
+Il suffit de modifier la direction de détection de la règle (<>).
 
-Il suffit de modifier la direction de détection de la règle (<->).
+![image](images/Ping_Entrant_Sortant.png)
 
 ---
 
@@ -404,8 +412,14 @@ Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été 
 ---
 
 **Reponse :**  
+```bash
 alert tcp 192.168.0.0/24 any -> 192.168.0.164 any (msg:"SSH connection";content"SSH-2.0";nocase;sid:40000006;rev:1;)
-On contrôle toutes communications depuis le même sous-réseau vers le host qui a comme adresse IP 192.168.0.164 et vérifie si l'enête d'un packet sniffé contient le mot clé `SSH-2.0` sans casse.
+```
+
+On contrôle toutes communications depuis le même sous-réseau vers le host qui a comme adresse IP 192.168.0.164 et on vérifie si l'entête d'un packet sniffé contient le mot clé `SSH-2.0` sans casse.
+
+![image](images/SSH_Detection.PNG)
+
 ---
 
 --
@@ -419,7 +433,9 @@ Lancer Wireshark et faire une capture du trafic sur l'interface connectée au br
 ---
 
 **Reponse :**   
+```bash
 snort -r fichier.pcap
+```
 
 ---
 
