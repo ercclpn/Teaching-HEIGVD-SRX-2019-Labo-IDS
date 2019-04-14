@@ -1,4 +1,5 @@
 # Teaching-HEIGVD-SRX-2019-Laboratoire-IDS
+Auteur : Mercier Jordan, Polier Florian, Tran Eric
 
 **ATTENTION : Commencez par créer un Fork de ce repo et travaillez sur votre fork.**
 
