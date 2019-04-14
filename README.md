@@ -368,7 +368,12 @@ log tcp any any -> 91.198.174.192 443 (msg:"ACCESS TO WIKIPEDIA";sid:4000015;rev
 Où le message a-t'il été journalisé ?
 Le message a été journalisé dans le fichier se trouvant dans /var/log/snort/snort.log.xxxxyyyyy
 
-Qu'est-ce qui a été journalisé ?
+Qu'est-ce qui a été journalisé ?  
+La banner de snort.  
+Des informations sur chaque trame qui concerne la règle ainsi que toutes les infos du paquet tcp.  
+Le temps d'éxecution ainsi que le nombre de paquet traités par snort.  
+Des statistiques sur les input/output et sur la mémoire.  
+Le nombre de paqeuts traités pour chaque protocole.  
 
 ---
 
