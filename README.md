@@ -305,7 +305,7 @@ sudo snort -c myrules.rules -i eth0
 ---
 
 **Reponse :**  
-On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regarder plus tard)
+On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0.
 
 ![image](images/snort_init_part1.PNG)
 ![image](images/snort_init_part2.PNG)
