@@ -290,7 +290,7 @@ alert tcp any any -> any any (msg:"Mon nom!"; content:"Rubinstein"; sid:4000015;
 ---
 
 **Reponse :**  
-Elle log une alerte quand il y a une communication tcp de n'importe quelle source vers n'importe qu'elle destination mais le paquet doit contenir dans ses data, un champs msg "Mon nom!" et un champs content avec la chaine "Rubinstein". Cette règle est identifié avec l'id "4000015" et il s'agit de la première version de la règle. (rev:1).
+Elle log une alerte quand il y a une communication tcp de n'importe quelle source vers n'importe quelle destination mais le paquet doit contenir dans ses data, un champs msg "Mon nom!" et un champs content avec la chaine "Rubinstein". Cette règle est identifiée avec l'id "4000015" et il s'agit de la première version de la règle. (rev:1).
 
 ---
 
@@ -305,7 +305,7 @@ sudo snort -c myrules.rules -i eth0
 ---
 
 **Reponse :**  
-On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regardé plus tard)
+On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regarder plus tard)
 
 ![image](images/snort_init_part1.PNG)
 ![image](images/snort_init_part2.PNG)
@@ -336,7 +336,14 @@ Aller au répertoire /var/log/snort. Ouvrir le fichier `alert`. Vérifier qu'il 
 ---
 
 **Reponse :**  
-
+Le premier nombre est le Generator ID, cela nous donne quel est le sous-système de snort qui a généré l'alerte.
+Le deuxième nombre est le Snort ID, par conséquent l'ID de notre règle.
+Le troisième nombre est l'ID de la révision.
+Le `text message` correspond au type d'alerte.
+La priorité de l'alerte, ici 0.
+Nous avons ensuite le timestamp, l'ip source ainsi que le port, l'ip de destination ainsi que le port.
+Nous pouvons voir que la requête est de type TCP avec un time to live de 53, un type of service de 0x0, le header de l'ip est de 20bits, la taille du datagramme est de 227, le paquet n'est pas fragmenté.
+Nous avons ensuite une séquence avec le N° 0xCD5EEAE6 et le numéro de l'ACK N° 0x3496644E, la taille de la fenêtre qui est de 0xF5, puis la longueur du segment tcp qui est de 20bits.
 ---
 
 
@@ -417,7 +424,7 @@ Essayer d'écrire une règle qui Alerte qu'une tentative de session SSH a été 
 alert tcp 192.168.0.0/24 any -> 192.168.0.164 any (msg:"SSH connection";content"SSH-2.0";nocase;sid:40000006;rev:1;)
 ```
 
-On contrôle toutes communications depuis le même sous-réseau vers le host qui a comme adresse IP 192.168.0.164 et on vérifie si l'entête d'un packet sniffé contient le mot clé `SSH-2.0` sans casse.
+On contrôle toutes communications depuis le même sous-réseau vers le host qui a comme adresse IP 192.168.0.164 et on vérifie si l'en-tête d'un packet sniffé contient le mot clé `SSH-2.0` sans casse.
 
 ![image](images/SSH_Detection.PNG)
 
