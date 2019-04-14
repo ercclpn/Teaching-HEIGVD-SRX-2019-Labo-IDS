@@ -307,8 +307,8 @@ sudo snort -c myrules.rules -i eth0
 **Reponse :**  
 On voit l'initialisation de snort (statistique, etc...) et le warning :No preprocessors configured for policy 0. (A regardé plus tard)
 
-![image](images/snort_init_part1.png)
-![image](images/snort_init_part2.png)
+![image](images/snort_init_part1.PNG)
+![image](images/snort_init_part2.PNG)
 ---
 
 Aller à un site web contenant votre nom ou votre mot clé que vous avez choisi dans son text (il faudra chercher un peu pour trouver un site en http...). Ensuite, arrêter Snort avec `CTRL-C`.
@@ -377,7 +377,7 @@ Ecrire une règle qui alerte à chaque fois que votre système reçoit un ping d
 ```bash
 alert icmp any any -> 192.168.0.164 any (msg:"Ping entrant";sid:4000016;rev:1;)
 ```
-![image](images/Ping_Entrant.png)
+![image](images/Ping_Entrant.PNG)
 
 ---
 
@@ -397,7 +397,7 @@ alert icmp any any <> 192.168.0.164 any (msg:"Ping detection";sid:4000016;rev:1;
 ```
 Il suffit de modifier la direction de détection de la règle (<>).
 
-![image](images/Ping_Entrant_Sortant.png)
+![image](images/Ping_Entrant_Sortant.PNG)
 
 ---
 
